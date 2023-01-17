@@ -7,10 +7,16 @@ app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
-@app.route('/')
-def hello():
+@app.route('/', strict_slashes=False)
+def hello_1():
     """Display 'Hello HBNB' """
     return "Hello HBNB!"
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hello_2():
+    """Display 'HBNB' """
+    return "HBNB"
 
 
 if __name__ == '__main__':
