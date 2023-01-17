@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, escape
+from flask import Flask, escape, render_template
 """
 Write a script that starts a Flask web application:
 """
@@ -35,6 +35,25 @@ def hello_python(text="is cool"):
     """display "python", followed by the value of the
     variable"""
     return 'Python ' + text.replace('_', ' ')
+
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def is_a_number(n):
+    """Display a number"""
+    return "{} is a number".format(n)
+
+
+@app.route('/number_template/<int:n>', strict_slashes=False)
+def display_html(n):
+    """ display a HTML page only if n is an integer """
+    return render_template("5-number.html", n=n)
+
+
+@app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
+def display_html_odd_even(n):
+    """ display a HTML page only if n is an integer:
+    H1 tag: “Number: n is even|odd” inside the tag BODY """
+    return render_template("6-number_odd_or_even.html", n=n)
 
 
 if __name__ == '__main__':

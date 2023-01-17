@@ -4,10 +4,9 @@ from flask import Flask
 Write a script that starts a Flask web application:
 """
 app = Flask(__name__)
-app.url_map.strict_slashes = False
 
 
-@app.route('/')
+@app.route('/', strict_slashes=False)
 def hello():
     """Display 'Hello HBNB' """
     return "Hello HBNB!"
